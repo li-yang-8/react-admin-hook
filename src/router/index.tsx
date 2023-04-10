@@ -1,13 +1,13 @@
 import { useRoutes } from "react-router-dom";
 import React from 'react';
 import { RouterConfig } from '@/libs/router'
-// import Home from "../views/home/index";
-import Home from "@/views/home";
+// import Home from "@/views/home";
+import Layouts from "@/layout";
 
 export const rootRouter: RouterConfig[] = [
   {
     path: '/',
-    element: <Home />,
+    element: <Layouts />,
   }
 ]
 

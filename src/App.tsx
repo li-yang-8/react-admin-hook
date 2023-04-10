@@ -1,7 +1,6 @@
 import React from 'react';
 import type { FC } from 'react';
 import { HashRouter } from "react-router-dom";
-// import { Button } from 'antd';
 import 'antd/dist/reset.css';
 import { ConfigProvider } from "antd";
 import zhCN from "antd/es/locale/zh_CN";
