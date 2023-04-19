@@ -10,7 +10,25 @@ module.exports = {
       // 约定：使用 @ 表示 src 文件所在路径
       '@': path.resolve(__dirname, 'src'),
     },
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+        ],
+      },
+    ],
   },
+  // style: {
+  //   postcss: {
+  //     plugins: [
+  //       require('tailwindcss'),
+  //       require('autoprefixer'),
+  //     ],
+  //   },
+  // },
   plugins: [
     {
       plugin: CracoLessPlugin,
@@ -24,7 +42,7 @@ module.exports = {
         },
         
         // modifyLessModuleRule
-        // 这个方法在新的版本中已经支持，可以直接来配置 css modules 
+        // 这个方法在新的版本中已经支持，可以直接来配置 css modules
         modifyLessModuleRule: (lessModuleRule, context) => {
             lessModuleRule.test = lessModuleRegex;
             // lessModuleRule.exclude = /node_modules|antd\.css/;

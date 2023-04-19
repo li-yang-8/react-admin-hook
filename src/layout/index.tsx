@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState  } from 'react';
 import './index.less'
 import { Layout, theme } from 'antd';
 import LayoutSider from './Sider';
 import LayoutHeader from './Header';
+import { Outlet } from 'react-router-dom';
 
 const { Content } = Layout;
 
@@ -34,7 +35,7 @@ const Layouts: React.FC = () => {
             background: colorBgContainer,
           }}
         >
-          Content
+          <Outlet/>
         </Content>
       </Layout>
     </Layout>

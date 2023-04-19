@@ -3,14 +3,15 @@ export interface MetaProps {
   keepAlive?: boolean;
   requiresAuth?: boolean;
   title: string;
-  key?: string;
+  role?:string // 
+  icon?: React.ReactNode
 }
 
 export interface RouterConfig {
   caseSensitive?: boolean;
-    children?: RouterConfig[];
-    element?: React.ReactNode;
-    path?: string;
-    meta?: MetaProps;
-    isLink?: string;
+  children?: RouterConfig[];
+  element?: React.ReactNode;
+  path?: string;
+  meta?: MetaProps;
+  isLink?: string;
 }

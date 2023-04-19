@@ -1,6 +1,6 @@
 import React from 'react';
 import type { FC } from 'react';
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import 'antd/dist/reset.css';
 import { ConfigProvider } from "antd";
 import zhCN from "antd/es/locale/zh_CN";
@@ -9,13 +9,13 @@ import zhCN from "antd/es/locale/zh_CN";
 import Router from "./router";
 
 const App: FC = () => (
-  <HashRouter>
+  <BrowserRouter>
     <ConfigProvider locale={zhCN}>
     {/* <Provider store={store}> */}
       <Router />
     {/* </Provider> */}
   </ConfigProvider>
-  </HashRouter>
+  </BrowserRouter>
 );
 
 export default App;
