@@ -15,7 +15,7 @@ const Layouts: React.FC = () => {
   return (
     <Layout
       style={{
-        height: '100vh'
+        minHeight:'100vh'
       }}
     >
       {/* 侧边导航栏 */}

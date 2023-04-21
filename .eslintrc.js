@@ -24,7 +24,14 @@ module.exports = {
        // 检查 Hooks 的使用规则
     "react-hooks/rules-of-hooks": "error", 
     // 检查依赖项的声明
-        "react-hooks/exhaustive-deps": "warn",
-    "@typescript-eslint/no-unused-vars": [2]
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/no-unused-vars": [2],
+    'max-len': [
+        2,
+        {
+          code: 120,
+          tabWidth: 2,
+        },
+      ],
     }
 }
