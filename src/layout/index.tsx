@@ -4,14 +4,17 @@ import { Layout, theme } from 'antd';
 import LayoutSider from './Sider';
 import LayoutHeader from './Header';
 import { Outlet } from 'react-router-dom';
+import TagView from '@/layout/TagView';
 
 const { Content } = Layout;
 
-const Layouts: React.FC = () => {
+
+const Layouts: React.FC= () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
   return (
     <Layout
       style={{
@@ -27,6 +30,7 @@ const Layouts: React.FC = () => {
           setCollapsed={setCollapsed}
           colorBgContainer={ colorBgContainer}
         ></LayoutHeader>
+        <TagView></TagView>
         <Content
           style={{
             margin: '24px 16px',

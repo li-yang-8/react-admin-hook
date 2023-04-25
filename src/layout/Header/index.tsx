@@ -7,6 +7,11 @@ import { Layout, Breadcrumb } from 'antd';
 import { useLocation, Link } from 'react-router-dom'
 import { RouterConfig } from '@/libs/router'
 import { ItemType, BreadcrumbItemType } from 'antd/es/breadcrumb/Breadcrumb'
+import {connect} from 'react-redux'
+import { addTag } from '@/store/actions/tagView';
+import { RootState } from '@/store/reducers';
+import { TagViewAction } from '@/store/actions/tagView'
+import { TagViewType } from '@/libs/tag-view'
 
 const { Header } = Layout;
 import { rootRouter } from '@/router/index'
@@ -15,6 +20,7 @@ interface HeaderProps {
   setCollapsed: (coll: boolean) => void;
   collapsed: boolean;
   colorBgContainer: string
+  addTag:(data:TagViewType) => TagViewAction
 }
 
 interface BreadcrumbType {
@@ -54,16 +60,26 @@ const getBreadData = (routers: RouterConfig[], pathName: string): BreadcrumbType
 
 
 const LayoutHeader: React.FC<HeaderProps> = (props) => {
-  const { collapsed, setCollapsed, colorBgContainer } = props;
+  const { collapsed, setCollapsed, colorBgContainer, addTag } = props;
   const { pathname } = useLocation();
   const [breadcrumbList, setBreadcrumbList] = useState<BreadcrumbType[]>([]);
 
   useEffect(() => {
-    const list = getBreadData(rootRouter, pathname);
+    let list = getBreadData(rootRouter, pathname);
+    const result:boolean = list.some((v)=> v.key === '/land-page')
+    if(!result) {
+      list = [{key: '/land-page', title: '首页'}, ...list]
+    }
+    addTag(list[list.length-1])
     setBreadcrumbList(list);
-  }, [pathname])
+  }, [pathname,addTag ])
 
   const itemRender = (item: ItemType, params: any, items: ItemType[]): ReactNode => {
+    if((item as BreadcrumbItemType).key === '/land-page') {
+      return  <Link to={(item as BreadcrumbItemType).key as string}>
+                 {(item as BreadcrumbItemType).title}
+              </Link>
+    }
     const last = items.indexOf(item) === items.length - 1;
     return last
       ?
@@ -71,22 +87,26 @@ const LayoutHeader: React.FC<HeaderProps> = (props) => {
         {(item as BreadcrumbItemType).title}
       </Link>
       : <span>{(item as BreadcrumbItemType).title}</span>
-   
-    
   };
 
   return (
-    <Header style={{ padding: 0, background: colorBgContainer }}>
-      <div className='flex items-center h-full'>
+    <Header className='shadow relative' style={{ padding: 0, background: colorBgContainer }}>
+      <div className='flex items-center h-full px-6'>
         {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
           className: 'trigger',
           onClick: () => setCollapsed(!collapsed),
         })}
         <Breadcrumb
+          className='ml-2'
           itemRender={itemRender}
           items={breadcrumbList} />
       </div>
     </Header>
   )
 }
-export default LayoutHeader
+export default connect(
+  (state:RootState)=> ({
+    tagList: state.TagViewType
+  }),
+  { addTag }
+)(LayoutHeader)

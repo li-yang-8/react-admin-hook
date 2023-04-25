@@ -70,7 +70,7 @@ export const rootRouter: RouterConfig[] = [
 ]
 
 const Router = () => {
-  const routes = useRoutes([
+  return useRoutes([
     {
       // 所有页面路由
       element: <Layouts />,
@@ -89,7 +89,6 @@ const Router = () => {
       element: <NotFound />
     }
   ]);
-  return routes;
 };
 
 export default Router;

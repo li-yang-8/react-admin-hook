@@ -86,6 +86,7 @@ const LayoutSider: React.FC<SiderProps> = (props) => {
 
 
   const handleMenuClick: MenuProps['onClick'] = ({ key }) => {
+    // console.log('keyPath', keyPath)
     navigate(key)
   }
 
