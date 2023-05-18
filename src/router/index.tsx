@@ -14,6 +14,7 @@ import Layouts from "@/layout";
 import Login from "@/views/login";
 import NotFound from "@/views/not-found";
 import LangPage from "@/views/land-page";
+import Three from "@/views/three";
 
 
 // 所有页面路由
@@ -64,6 +65,22 @@ export const rootRouter: RouterConfig[] = [
         meta: {
           title: '菜单2',
         },
+      }
+    ]
+  },
+  {
+    path: '/three',
+    element: <Three/>,
+    meta: {
+      title: 'three'
+    },
+    children: [
+      {
+        path: '/three/start',
+        element: <Three />,
+        meta: {
+          title: 'three 练习',
+        }
       }
     ]
   }
