@@ -15,7 +15,7 @@ import Login from "@/views/login";
 import NotFound from "@/views/not-found";
 import LangPage from "@/views/land-page";
 import Three from "@/views/three";
-
+import DbTable from "@/views/indexed-db-table";
 
 // 所有页面路由
 export const rootRouter: RouterConfig[] = [
@@ -80,6 +80,22 @@ export const rootRouter: RouterConfig[] = [
         element: <Three />,
         meta: {
           title: 'three 练习',
+        }
+      }
+    ]
+  },
+  {
+    path: '/db-table',
+    // element: <DbTable />,
+    meta: {
+      title: 'db-table'
+    },
+    children: [
+      {
+        path: '/db-table/user',
+        element: <DbTable />,
+        meta: {
+          title: 'User',
         }
       }
     ]
