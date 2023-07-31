@@ -1,10 +1,12 @@
 import React from "react";
-import { Space, Table, Tag, Pagination } from 'antd';
+import { Space, Table, Tag, Pagination,Button } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
+import { useLiveQuery } from 'dexie-react-hooks';
+import { db, addUserItem, clearAllData } from "@/utils/db";
 
 
 interface DataType {
-  key: string;
+  id?: number;
   name: string;
   age: number;
   address: string;
@@ -14,8 +16,8 @@ interface DataType {
 const columns: ColumnsType<DataType> = [
   {
     title: 'ID',
-    dataIndex: 'key',
-    key: 'key',
+    dataIndex: 'id',
+    key: 'id',
     // render: (_,_1, index)=> <span>{ index}</span>
   },
   {
@@ -66,45 +68,65 @@ const columns: ColumnsType<DataType> = [
   },
 ];
 
-const data: DataType[] = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sydney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-];
+// const data: DataType[] = [
+//   {
+//     id: 1,
+//     name: 'John Brown',
+//     age: 32,
+//     address: 'New York No. 1 Lake Park',
+//     tags: ['nice', 'developer'],
+//   },
+//   {
+//     id: 2,
+//     name: 'Jim Green',
+//     age: 42,
+//     address: 'London No. 1 Lake Park',
+//     tags: ['loser'],
+//   },
+//   {
+//     id: 2,
+//     name: 'Joe Black',
+//     age: 32,
+//     address: 'Sydney No. 1 Lake Park',
+//     tags: ['cool', 'teacher'],
+//   },
+// ];
 
 const handleSizeChange = (page:number, pageSize:number) => {
   console.log(page, pageSize)
 }
 
+const handleAddItem = async () => {
+  try {
+    await addUserItem('zhangsan', 21, 'aaa', ['a','b'])
+  } catch (error) {
+    console.log('error', error)
+  }
+}
+
+const handleClearItem = async () => {
+  try {
+    await clearAllData()
+  } catch (error) {
+    console.log('清除失败', error);
+  }
+}
+
 
 const DbTable: React.FC = () => {
+  const displayList = useLiveQuery(() => db.user.toArray(), []);
   return (
     <>
       <Table
-        className="h-[80vh]"
+        className="h-[70vh]"
         scroll={{ x: 'max-content', y: '80vh' }}
         pagination={false}
         columns={columns}
-        dataSource={data} />
+        rowKey={(record) => (record.id || 1).toString()}
+        dataSource={displayList} />
       <div className="flex justify-end">
+      <Button type='primary' onClick={handleAddItem}>添加</Button>
+      <Button type='primary' onClick={handleClearItem}>清除</Button>
         <Pagination
           defaultCurrent={1}
           total={50}

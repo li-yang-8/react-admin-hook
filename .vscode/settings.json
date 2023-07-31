@@ -6,6 +6,6 @@
   "workbench.editor.pinnedTabSizing": "normal",
   "window.autoDetectColorScheme": false,
   "explorer.openEditors.minVisible": 0,
-  "window.zoomLevel": 0,
+  "window.zoomLevel": -1,
   "debug.console.fontSize": 16
 }
