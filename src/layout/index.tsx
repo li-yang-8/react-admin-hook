@@ -18,7 +18,7 @@ const Layouts: React.FC= () => {
   return (
     <Layout
       style={{
-        minHeight:'100vh'
+        minHeight:'50vh'
       }}
     >
       {/* 侧边导航栏 */}
@@ -36,7 +36,8 @@ const Layouts: React.FC= () => {
             margin: '24px 16px',
             padding: 24,
             minHeight: 280,
-            background: colorBgContainer,
+            //  content 背景颜色先用灰色
+            // background: colorBgContainer,
           }}
         >
           <Outlet/>

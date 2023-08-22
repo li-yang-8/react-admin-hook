@@ -1,8 +1,8 @@
 import Dexie from 'dexie';
 // import { useLiveQuery } from 'dexie-react-hooks'
 
-export interface UserList {
-  id?: number;
+export type UserList = {
+  id: number;
   name: string;
   address: string;
   tags: string[]
@@ -10,7 +10,7 @@ export interface UserList {
 }
 
 class Userlist extends Dexie {
-  user!: Dexie.Table<UserList, number>
+  user!: Dexie.Table<UserList | Omit<UserList, 'id'>, number>
   constructor() {
     super('userList');
     this.version(1).stores({
@@ -28,6 +28,38 @@ export const addUserItem = (name:string, age: number,address:string, tags:string
     tags,
     age,
   })
+}
+
+export const updatedUser = (
+  {
+    name,
+    age,
+    address, 
+    tags,
+    id
+  }: {
+      name: string,
+      age: number,
+      address: string,
+      tags: string[],
+      id?: number
+}
+) => {
+  return db.user.put({
+    id,
+    name,
+    address,
+    tags,
+    age,
+  })
+}
+
+export const deleteUserItem = (id: number) => {
+  db.user.delete(id)
+}
+
+export const searchUser = (value: string) => {
+  return db.user.where('name').equals(value).toArray()
 }
 
 export const clearAllData = () => {
