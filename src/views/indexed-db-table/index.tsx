@@ -155,7 +155,7 @@ const DbTable: React.FC = () => {
         <div className="flex items-center justify-between w-full">
           <div>
             <Button type='primary' onClick={handleOpenAddModal}>添加用户</Button>
-            <Button className="ml-4" type='primary' onClick={handleClearItem}>清楚全部用户</Button>
+            <Button className="ml-4" type='primary' onClick={handleClearItem}>清除全部用户</Button>
           </div>
           <div>
             <Search placeholder="请输入姓名进行查询" onSearch={handleSearchUser} style={{ width: 200 }} />
