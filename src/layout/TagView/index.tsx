@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 import { connect } from 'react-redux';
 import { RootState } from '@/store/reducers';
 import { TagViewType } from '@/libs/tag-view'
 import { Space, Tag } from 'antd';
 import { TagViewAction } from '@/store/actions/tagView';
-import { 
+import {
   deleteTag,
   deleteAllTag,
   deleteOtherTag,
 } from '@/store/actions/tagView';
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from 'react-router-dom';
 import type { MenuProps } from 'antd';
 import { Dropdown } from 'antd';
 
@@ -63,21 +63,21 @@ const TagView: React.FC<TagViewProps> = (props) => {
       navigate(key)
       deleteAllTag(tag)
       return
-    } 
+    }
     if(tag.key !== pathname) {
       navigate(tag.key)
     }
     deleteOtherTag(tag)
   }
-  
+
 
   return (
     <div className="bg-white h-9 flex items-center px-6">
       <Space size={[0, 8]} wrap>
         {tagList.map((v) =>
-          <Dropdown 
-            key={v.key} 
-            menu={{ items, onClick:({key})=>handleRightClickOperate(key, v) }} 
+          <Dropdown
+            key={v.key}
+            menu={{ items, onClick:({key})=>handleRightClickOperate(key, v) }}
             trigger={['contextMenu']}>
             <div
               style={{
@@ -108,7 +108,7 @@ export default connect(
   (state: RootState) => ({
     tagList: state.TagViewType
   }),
-  { 
+  {
     deleteTag,
     deleteAllTag,
     deleteOtherTag,

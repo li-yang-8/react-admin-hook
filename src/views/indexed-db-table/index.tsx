@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Space, Table, Tag, Button, Card, Modal, Form, Input, Select, InputNumber  } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Space, Table, Tag, Button, Card, Modal, Form, Input, Select, InputNumber } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { db, clearAllData, updatedUser, deleteUserItem, UserList, searchUser } from "@/utils/db";
+import { db, clearAllData, updatedUser, deleteUserItem, UserList, searchUser } from '@/utils/db';
 
 
 const { Option } = Select;
@@ -69,7 +69,7 @@ const DbTable: React.FC = () => {
       render: (_, { tags }) => (
         <>
           {tags.map((tag) => {
-            let color = tag.length > 5 ? 'geekblue' : 'green';
+            const color = tag.length > 5 ? 'geekblue' : 'green';
             return (
               <Tag color={color} key={tag}>
                 {tag.toUpperCase()}
@@ -90,7 +90,7 @@ const DbTable: React.FC = () => {
       ),
     },
   ];
-  
+
   const handleEditUserInfo = (value: UserList) => {
     form.setFieldsValue(value)
     setItemId(value?.id || null)
@@ -103,7 +103,7 @@ const DbTable: React.FC = () => {
     } catch(error) {
       console.log('删除失败', error)
     }
-  } 
+  }
 
   const handleOpenAddModal = () => {
     form.resetFields()
@@ -160,7 +160,7 @@ const DbTable: React.FC = () => {
           <div>
             <Search placeholder="请输入姓名进行查询" onSearch={handleSearchUser} style={{ width: 200 }} />
           </div>
-       </div>
+        </div>
       </Card>
       <Table
         scroll={{ x: 'max-content', y: '70vh' }}

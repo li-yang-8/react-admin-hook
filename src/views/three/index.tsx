@@ -1,4 +1,4 @@
-import React, { FC,useEffect, useRef   } from "react";
+import React, { FC,useEffect, useRef } from 'react';
 import * as THREE from 'three';
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
@@ -28,7 +28,7 @@ const Three: FC = () => {
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setAnimationLoop(animation);
-    (divRef  as any).current.appendChild(renderer.domElement);
+    (divRef as any).current.appendChild(renderer.domElement);
 
     // animation
     function animation(time: number) {

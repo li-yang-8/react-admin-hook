@@ -1,4 +1,4 @@
-import React, { useState  } from 'react';
+import React, { useState, Suspense } from 'react';
 import './index.less'
 import { Layout, theme } from 'antd';
 import LayoutSider from './Sider';
@@ -31,17 +31,21 @@ const Layouts: React.FC= () => {
           colorBgContainer={ colorBgContainer}
         ></LayoutHeader>
         <TagView></TagView>
-        <Content
-          style={{
-            margin: '24px 16px',
-            padding: 24,
-            minHeight: 280,
-            //  content 背景颜色先用灰色
-            // background: colorBgContainer,
-          }}
-        >
-          <Outlet/>
-        </Content>
+        <Suspense fallback={
+          <div> loading..... </div>
+        }>
+          <Content
+            style={{
+              margin: '24px 16px',
+              padding: 24,
+              minHeight: 280,
+              //  content 背景颜色先用灰色
+              // background: colorBgContainer,
+            }}
+          >
+            <Outlet/>
+          </Content>
+        </Suspense>
       </Layout>
     </Layout>
   );

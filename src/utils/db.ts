@@ -34,7 +34,7 @@ export const updatedUser = (
   {
     name,
     age,
-    address, 
+    address,
     tags,
     id
   }: {

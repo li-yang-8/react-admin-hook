@@ -1,21 +1,23 @@
-import { useRoutes } from "react-router-dom";
-import React, {} from 'react';
-import { RouterConfig } from '@/libs/router'
+import { useRoutes } from 'react-router-dom';
+import React, { lazy } from 'react';
+import { RouterConfig } from '@/libs/router';
 
 // views
-// const Home = lazy(() => import('@/views/home'))
+const Home = lazy(() => import('@/views/home'));
 // const Layouts = lazy(()=> import('@/layout'))
-// const Login = lazy(()=> import('@/views/login'))
-// const NotFound = lazy(()=> import('@/views/not-found'))
-// const LangPage = lazy(()=> import('@/views/land-page'))
+const Login = lazy(() => import('@/views/login'));
+const NotFound = lazy(() => import('@/views/not-found'));
+const LangPage = lazy(() => import('@/views/land-page'));
+const Three = lazy(() => import('@/views/three'));
+const DbTable = lazy(() => import('@/views/indexed-db-table'));
 
-import Home from "@/views/home";
-import Layouts from "@/layout";
-import Login from "@/views/login";
-import NotFound from "@/views/not-found";
-import LangPage from "@/views/land-page";
-import Three from "@/views/three";
-import DbTable from "@/views/indexed-db-table";
+// import Home from "@/views/home";
+import Layouts from '@/layout';
+// import Login from "@/views/login";
+// import NotFound from "@/views/not-found";
+// import LangPage from "@/views/land-page";
+// import Three from "@/views/three";
+// import DbTable from "@/views/indexed-db-table";
 
 // 所有页面路由
 export const rootRouter: RouterConfig[] = [

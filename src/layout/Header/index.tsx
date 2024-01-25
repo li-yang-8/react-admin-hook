@@ -34,7 +34,7 @@ const getBreadData = (routers: RouterConfig[], pathName: string): BreadcrumbType
     breadData.push(item)
     // 如果找到 抛出错误终止循环
     if (pathName === item.path) {
-      throw new Error("GOT IT!");
+      throw new Error('GOT IT!');
     }
 
     if (item.children?.length) {
@@ -76,9 +76,9 @@ const LayoutHeader: React.FC<HeaderProps> = (props) => {
 
   const itemRender = (item: ItemType, params: any, items: ItemType[]): ReactNode => {
     if((item as BreadcrumbItemType).key === '/land-page') {
-      return  <Link to={(item as BreadcrumbItemType).key as string}>
-                 {(item as BreadcrumbItemType).title}
-              </Link>
+      return <Link to={(item as BreadcrumbItemType).key as string}>
+        {(item as BreadcrumbItemType).title}
+      </Link>
     }
     const last = items.indexOf(item) === items.length - 1;
     return last

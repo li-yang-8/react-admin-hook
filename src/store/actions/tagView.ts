@@ -1,4 +1,4 @@
-import { 
+import {
   TAG_VIEW_ADD_TAG,
   TAG_VIEW_DELETE_TAG,
   TAG_VIEW_DELETE_ALL_TAG,

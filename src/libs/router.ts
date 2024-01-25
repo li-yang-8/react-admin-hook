@@ -3,7 +3,7 @@ export interface MetaProps {
   keepAlive?: boolean;
   requiresAuth?: boolean;
   title: string;
-  role?:string // 
+  role?:string
   icon?: React.ReactNode
 }
 
