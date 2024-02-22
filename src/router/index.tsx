@@ -13,6 +13,8 @@ const DbTable = lazy(() => import('@/views/indexed-db-table'));
 
 // import Home from "@/views/home";
 import Layouts from '@/layout';
+
+import LoadingView from '@/components/Common/LoadingView'
 // import Login from "@/views/login";
 // import NotFound from "@/views/not-found";
 // import LangPage from "@/views/land-page";
@@ -33,7 +35,6 @@ export const rootRouter: RouterConfig[] = [
   },
   {
     path: '/component',
-    element: <Home />,
     meta: {
       title: '组件',
     },
@@ -49,7 +50,6 @@ export const rootRouter: RouterConfig[] = [
   },
   {
     path: '/router',
-    element: <Home />,
     meta: {
       title: '路由嵌套',
     },
@@ -67,12 +67,11 @@ export const rootRouter: RouterConfig[] = [
         meta: {
           title: '菜单2',
         },
-      }
+      },
     ]
   },
   {
     path: '/three',
-    element: <Three/>,
     meta: {
       title: 'three'
     },
@@ -88,7 +87,6 @@ export const rootRouter: RouterConfig[] = [
   },
   {
     path: '/db-table',
-    // element: <DbTable />,
     meta: {
       title: 'db-table'
     },

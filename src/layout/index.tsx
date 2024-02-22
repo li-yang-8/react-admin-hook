@@ -5,6 +5,7 @@ import LayoutSider from './Sider';
 import LayoutHeader from './Header';
 import { Outlet } from 'react-router-dom';
 import TagView from '@/layout/TagView';
+import LoadingView from '@/components/Common/LoadingView'
 
 const { Content } = Layout;
 
@@ -32,7 +33,7 @@ const Layouts: React.FC= () => {
         ></LayoutHeader>
         <TagView></TagView>
         <Suspense fallback={
-          <div> loading..... </div>
+          <LoadingView/>
         }>
           <Content
             style={{
